@@ -24,13 +24,6 @@ const impressaoSchema = new mongoose.Schema({
     data: {
         type: Date,
         required: true,
-        validate: {
-            validator: function(value) {
-            return value <= new Date().toISOString().split('T')[0]; // impede datas futuras
-            },
-            message: "A data não pode estar no futuro"
-        }
-
     }
 })
 
