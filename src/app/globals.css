@@ -21,3 +21,9 @@
   text-black font-medium
   text-base
 }
+
+.card_dashboard{
+  @apply
+  p-6 gap-3 w-full flex items-center text-start bg-gradient-to-r rounded-md
+  text-white
+}
