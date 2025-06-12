@@ -1,26 +1,23 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.active{
+  @apply
+  bg-white shadow-lg text-black text-sm rounded-md
+  flex justify-center items-center gap-2
+  p-1
+  w-full
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.inactive{
+  @apply
+  bg-gray-100 text-gray-600 text-sm
+  flex justify-center items-center gap-2
+  p-1
+  w-full
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.form_label{
+  @apply
+  text-black font-medium
+  text-base
 }
