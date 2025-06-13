@@ -1,8 +1,6 @@
 import { getImpressoes } from "./impressaoDB"
 import { escola } from "@/enums/enums"
 
-//TODO: PADRONIZAR AS FUNÇÕES POIS SÃO REPETITIVAS
-
 const arrayImpressoes = await getImpressoes()
 const hoje = new Date().toISOString().split('T')[0]
 
