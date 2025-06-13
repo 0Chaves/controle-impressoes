@@ -20,7 +20,10 @@ export default function Form(){
             await salvarImpressao(impressao)
             toast.success("Impressão salva com sucesso!")
             setImpressao({
-                paginas:0
+                escola:'',
+                tipo_folha:'',
+                paginas:0,
+                data: new Date().toISOString().split('T')[0],
             })
         } catch (error) {
             toast.error("Erro ao salvar impressão!")

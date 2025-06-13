@@ -1,25 +1,37 @@
 'use client'
 import HistoricoImpressoes from "@/components/historicoImpressoes"
+import { escola, meses, tipo_folha } from "@/enums/enums"
 import { Funnel } from "lucide-react"
 import { useState } from "react"
 
 export default function Historico(){
 
-    const [filtroEscola, setFiltroEscola] = useState("")
-    const [filtroMes, setFiltroMes] = useState("")
-    const [filtroAno, setFiltroAno] = useState("")
-    const [filtroTipoFolha, setFiltroTipoFolha] = useState("")
+    const [impressoes, setImpressoes] = useState([])
+
+    const [filtros, setFiltros] = useState({
+        escola: '',
+        tipo_folha: '',
+        mes: '',
+        ano: ''
+    })
+
+    const buscar = async (e) =>{
+        e.preventDefault()
+        const query = new URLSearchParams(filtros).toString()
+        const res = await fetch(`/api/impressao?${query}`)
+        const data = await res.json()
+        setImpressoes(data)
+        console.log(data)
+    }
 
     const limparFiltros = (e) =>{
         e.preventDefault()
-        setFiltroEscola("")
-        setFiltroMes("")
-        setFiltroAno("")
-        setFiltroTipoFolha("")
-    }
-
-    const buscar = (e) => {
-        
+        setFiltros({
+            escola: '',
+            tipo_folha: '',
+            mes: '',
+            ano: ''
+        })
     }
 
     return(
@@ -34,13 +46,37 @@ export default function Historico(){
                         <Funnel/>
                         <h3>Filtros</h3>
                     </div>
+                    <form onSubmit={buscar}>
+                        <select onChange={e => setFiltros({...filtros, escola: e.target.value})}>
+                            <option value="">Todas Escolas</option>
+                            {escola.map(escola=> <option value={escola}>{escola}</option> )}
+                        </select>
 
+                        <select onChange={e => setFiltros({...filtros, tipo_folha: e.target.value})}>
+                            <option value="">Todos Tipos</option>
+                            {tipo_folha.map(tipo=> <option value={tipo}>{tipo}</option> )}
+                        </select>
+
+                        <select onChange={e => setFiltros({...filtros, mes: e.target.value})}>
+                            <option value="">Todos os meses</option>
+                            {meses.map(mes=> <option value={mes.value}>{mes.label}</option> )}
+                        </select>
+
+                        <input
+                            type="number"
+                            placeholder="Ano"
+                            value={filtros.ano}
+                            onChange={e => setFiltros({...filtros, ano: e.target.value})}
+                        />
+
+                        <button className="bg-blue-600 border rounded-md text-white px-2 hover:bg-blue-800 hover:cursor-pointer">Filtrar</button>
+                    </form>
                 </div>
                 <div>
                     {/* cards aqui */}
                 </div>
                 <div>
-                    <HistoricoImpressoes filtroEscola={filtroEscola} filtroMes={filtroMes} filtroAno={filtroAno} filtroTipoFolha={filtroTipoFolha}/>
+                    <HistoricoImpressoes impressoes={impressoes}/>
                 </div>
             </div>
         </main>
