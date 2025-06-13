@@ -60,61 +60,23 @@ export function paginasTotal () {
     return paginas_total
 }
 
-export function impressoes_capivari(){
+export function impressoes_escola(escola){
     let impressoes = 0
     arrayImpressoes.map(impressao=>{
-        if(impressao.escola == escola[1]){
+        if(impressao.escola == escola){
             impressoes += 1
         }
     })
     return impressoes
 }
 
-export function impressoes_telbio(){
-    let impressoes = 0
-    arrayImpressoes.map(impressao=>{
-        if(impressao.escola == escola[2]){
-            impressoes += 1
-        }
-    })
-    return impressoes
-}
-export function impressoes_mundoencantado(){
-    let impressoes = 0
-    arrayImpressoes.map(impressao=>{
-        if(impressao.escola == escola[0]){
-            impressoes += 1
-        }
-    })
-    return impressoes
-}
-
-export function paginas_capivari(){
+export function paginas_escola(escola){
     let paginas = 0
     arrayImpressoes.map(impressao=>{
-        if(impressao.escola == escola[1]){
+        if(impressao.escola == escola){
             paginas += impressao.paginas
         }
     })
     return paginas
 }
 
-export function paginas_telbio(){
-    let paginas = 0
-    arrayImpressoes.map(impressao=>{
-        if(impressao.escola == escola[2]){
-            paginas += impressao.paginas
-        }
-    })
-    return paginas
-}
-
-export function paginas_mundoencantado(){
-    let paginas = 0
-    arrayImpressoes.map(impressao=>{
-        if(impressao.escola == escola[0]){
-            paginas += impressao.paginas
-        }
-    })
-    return paginas
-}

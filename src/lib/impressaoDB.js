@@ -6,7 +6,10 @@ import { revalidatePath } from "next/cache";
 
 export async function getImpressoes(){
     await connectDB()
-    return Impressao.find({})
+    let impressoes = await Impressao.find({}).lean()
+    return impressoes.map(impressao=>({
+        ...impressao, _id: impressao._id.toString()
+    }))
 }
 
 export async function salvarImpressao(impressao){

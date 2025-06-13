@@ -1,4 +1,5 @@
-import { impressoes_capivari, impressoes_mundoencantado, impressoes_telbio, impressoesHoje, impressoesMes, impressoesTotal, paginas_capivari, paginas_mundoencantado, paginas_telbio, paginasHoje, paginasMes, paginasTotal } from "@/lib/filtros";
+import { escola } from "@/enums/enums";
+import { impressoes_escola, impressoesHoje, impressoesMes, impressoesTotal, paginas_escola, paginasHoje, paginasMes, paginasTotal } from "@/lib/filtros";
 import { Calendar, FileText, Printer } from "lucide-react";
 
 export default async function Dashboard() {
@@ -41,33 +42,33 @@ export default async function Dashboard() {
         <div className="border border-gray-100 shadow-md p-6 rounded-md space-y-4">
           <h3 className="text-xl text-gray-600 font-medium">Estatística por escola</h3>
           <div className="w-full p-6 flex justify-between items-center border rounded-md shadow-lg bg-blue-100 border-blue-200 text-blue-600 ">
-            <div className="text-start border border-blue-200">
+            <div className="text-start border border-blue-200 p-1 rounded-md">
               EMEF Capivari
             </div>
             <div className="flex flex-col text-end space-y-1">
-                <p className="font-bold text-2xl">{impressoes_capivari()}</p>
+                <p className="font-bold text-2xl">{impressoes_escola(escola[1])}</p>
                 <p>impressões</p>
-                <p>{paginas_capivari()} páginas</p>
+                <p>{paginas_escola(escola[1])} páginas</p>
             </div>
           </div>
           <div className="w-full p-6 flex justify-between items-center border rounded-md shadow-lg bg-green-100 border-green-200 text-green-600 ">
-            <div className="text-start border border-green-200">
+            <div className="text-start border border-green-200 p-1 rounded-md">
               EMEF Telbio Farias Cardoso
             </div>
             <div className="flex flex-col text-end space-y-1">
-                <p className="font-bold text-2xl">{impressoes_telbio()}</p>
+                <p className="font-bold text-2xl">{impressoes_escola(escola[2])}</p>
                 <p>impressões</p>
-                <p>{paginas_telbio()} páginas</p>
+                <p>{paginas_escola(escola[2])} páginas</p>
             </div>
           </div>
           <div className="w-full p-6 flex justify-between items-center border rounded-md shadow-lg bg-purple-100 border-purple-200 text-purple-600 ">
-            <div className="text-start border border-purple-200">
+            <div className="text-start border border-purple-200 p-1 rounded-md">
               EMEI Mundo Encantado
             </div>
             <div className="flex flex-col text-end space-y-1">
-                <p className="font-bold text-2xl">{impressoes_mundoencantado()}</p>
+                <p className="font-bold text-2xl">{impressoes_escola(escola[0])}</p>
                 <p>impressões</p>
-                <p>{paginas_mundoencantado()} páginas</p>
+                <p>{paginas_escola(escola[0])} páginas</p>
             </div>
           </div>
         </div>
