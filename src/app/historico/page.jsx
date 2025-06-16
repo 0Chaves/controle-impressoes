@@ -61,7 +61,7 @@ export default function Historico(){
                             <label className="font-medium">Escola</label>
                             <select value={filtros.escola} onChange={e => setFiltros({...filtros, escola: e.target.value})} className="bg-white rounded-md p-1 border w-full">
                                 <option value="">Todas Escolas</option>
-                                {escola.map(escola=> <option value={escola}>{escola}</option> )}
+                                {escola.map(escola=> <option key={escola} value={escola}>{escola}</option> )}
                             </select>
                         </div>
 
@@ -69,14 +69,14 @@ export default function Historico(){
                             <label className="font-medium">Tipo de folha</label>    
                             <select value={filtros.tipo_folha} onChange={e => setFiltros({...filtros, tipo_folha: e.target.value})} className="bg-white rounded-md p-1 border w-full">
                                 <option value="">Todos Tipos</option>
-                                {tipo_folha.map(tipo=> <option value={tipo}>{tipo}</option> )}
+                                {tipo_folha.map(tipo=> <option key={tipo} value={tipo}>{tipo}</option> )}
                             </select>
                         </div>
                         <div className="m-0">
                             <label className="font-medium">Mes</label>
                             <select value={filtros.mes} onChange={e => setFiltros({...filtros, mes: e.target.value})} className="bg-white rounded-md p-1 border w-full">
                                 <option value={""}>Todos os meses</option>
-                                {meses.map(mes=> <option value={mes.value}>{mes.label}</option> )}
+                                {meses.map(mes=> <option key={mes.value} value={mes.value}>{mes.label}</option> )}
                             </select>
                         </div>
 
