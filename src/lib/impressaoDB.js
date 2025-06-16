@@ -23,10 +23,12 @@ export async function salvarImpressao(impressao){
     })
     await novaImpressao.save()
     revalidatePath('/novaimpressao')
+    revalidatePath('/dashboard')
 }
 
 export async function deletarImpressao(id){
     await connectDB()
     await Impressao.findByIdAndDelete(id)
     revalidatePath('/historico')
+    revalidatePath('/dashboard')
 }

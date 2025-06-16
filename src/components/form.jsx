@@ -61,7 +61,7 @@ export default function Form(){
                 </div>
             </div>
             
-            <div className="bg-cyan-100 rounded-md text-black font-normal flex gap-2 items-center p-4">
+            <div className="bg-cyan-50 border border-cyan-200 rounded-lg shadow-sm text-blue-800 font-normal flex gap-2 items-center p-4">
                 <Printer/>
                 <div>
                     <h3 className="text-xl">Resumo da impressão</h3>

@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-blue-50 flex flex-col items-center`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-blue-50 to-indigo-50 flex flex-col items-center`}
       >
         <div className="flex flex-col items-center justify-center text-center p-8">
           <div className="flex gap-2">
@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
             </div>
             <div className=" flex flex-col justify-center items-center space-y-5">
               <h1 className="text-5xl font-bold text-black">Sistema de Controle de Impressões</h1>
-              <p className="text-2xl text-gray-600 font-medium">Gerencie e monitore as impressões das escolas</p>
+              <p className="text-lg text-gray-600">Gerencie e monitore as impressões das escolas</p>
             </div>
           </div>
           <div className="flex mt-5">
