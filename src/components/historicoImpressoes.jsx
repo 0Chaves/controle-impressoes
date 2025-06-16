@@ -2,7 +2,9 @@ import { escola } from "@/enums/enums"
 
 export default function HistoricoImpressoes({impressoes}){
 
-    const imp = impressoes
+    const imp = impressoes.sort((a, b) => {
+        return new Date(b.data) - new Date(a.data); // decrescente
+    })
 
     return(
         <div className="p-4 pt-0">

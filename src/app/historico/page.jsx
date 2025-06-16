@@ -25,6 +25,16 @@ export default function Historico(){
         console.log(data)
     }
 
+    useEffect(()=>{
+        async function iniciar_historico(){
+            const query = new URLSearchParams(filtros).toString()
+            const res = await fetch(`/api/impressao?${query}`)
+            const data = await res.json()
+            setImpressoes(data) 
+        }
+        iniciar_historico()
+    },[])
+
     const limparFiltros = (e) =>{
         setFiltros({
             escola: '',
@@ -119,7 +129,7 @@ export default function Historico(){
                     </div>
                 </div>
                 <div>
-                    <h3>Lista de Impressões ({impressoes.length} registros)</h3>
+                    <h3 className="text-gray-600 text-2xl">Lista de Impressões ({impressoes.length} registros)</h3>
                     <HistoricoImpressoes impressoes={impressoes}/>
                 </div>
             </div>
