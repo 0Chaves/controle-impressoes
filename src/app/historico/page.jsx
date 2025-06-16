@@ -47,37 +47,52 @@ export default function Historico(){
                         <h3 className="text-2xl">Filtros</h3>
                     </div>
                     <form onSubmit={buscar} className="p-2 space-x-2 flex justify-around">
-                        <select value={filtros.escola} onChange={e => setFiltros({...filtros, escola: e.target.value})} className="bg-white rounded-md p-1 border w-full">
-                            <option value="">Todas Escolas</option>
-                            {escola.map(escola=> <option value={escola}>{escola}</option> )}
-                        </select>
+                        <div className="m-0">
+                            <label className="font-medium">Escola</label>
+                            <select value={filtros.escola} onChange={e => setFiltros({...filtros, escola: e.target.value})} className="bg-white rounded-md p-1 border w-full">
+                                <option value="">Todas Escolas</option>
+                                {escola.map(escola=> <option value={escola}>{escola}</option> )}
+                            </select>
+                        </div>
 
-                        <select value={filtros.tipo_folha} onChange={e => setFiltros({...filtros, tipo_folha: e.target.value})} className="bg-white rounded-md p-1 border w-full">
-                            <option value="">Todos Tipos</option>
-                            {tipo_folha.map(tipo=> <option value={tipo}>{tipo}</option> )}
-                        </select>
+                        <div className="m-0">
+                            <label className="font-medium">Tipo de folha</label>    
+                            <select value={filtros.tipo_folha} onChange={e => setFiltros({...filtros, tipo_folha: e.target.value})} className="bg-white rounded-md p-1 border w-full">
+                                <option value="">Todos Tipos</option>
+                                {tipo_folha.map(tipo=> <option value={tipo}>{tipo}</option> )}
+                            </select>
+                        </div>
+                        <div className="m-0">
+                            <label className="font-medium">Mes</label>
+                            <select value={filtros.mes} onChange={e => setFiltros({...filtros, mes: e.target.value})} className="bg-white rounded-md p-1 border w-full">
+                                <option value={""}>Todos os meses</option>
+                                {meses.map(mes=> <option value={mes.value}>{mes.label}</option> )}
+                            </select>
+                        </div>
 
-                        <select value={filtros.mes} onChange={e => setFiltros({...filtros, mes: e.target.value})} className="bg-white rounded-md p-1 border w-full">
-                            <option value={""}>Todos os meses</option>
-                            {meses.map(mes=> <option value={mes.value}>{mes.label}</option> )}
-                        </select>
-
-                        <input
-                            type="number"
-                            placeholder="Ano"
-                            value={filtros.ano}
-                            onChange={e => setFiltros({...filtros, ano: e.target.value})}
-                            className="bg-white rounded-md p-1 border w-full"
-                        />
-
-                        <button className="bg-blue-600 border rounded-md text-white px-2 hover:bg-blue-800 hover:cursor-pointer w-full">Filtrar</button>
-                        <button onClick={limparFiltros} className="bg-blue-600 border rounded-md text-white px-2 hover:bg-blue-800 hover:cursor-pointer w-full">Limpar Filtros</button>
+                        <div className="m-0">
+                            <label className="font-medium">Ano</label>
+                            <input
+                                type="number"
+                                placeholder="Ano"
+                                value={filtros.ano}
+                                onChange={e => setFiltros({...filtros, ano: e.target.value})}
+                                className="bg-white rounded-md p-1 border w-full"
+                            />
+                        </div>
+                        <div className="flex items-baseline-last m-0">
+                            <button className="bg-blue-600 border rounded-md text-white px-3 py-1 hover:bg-blue-800 hover:cursor-pointer w-full">Filtrar</button>
+                        </div>
+                        <div className="flex items-baseline-last m-0">
+                            <button onClick={limparFiltros} className="bg-blue-600 border rounded-md text-white px-3 py-1 hover:bg-blue-800 hover:cursor-pointer w-full">Limpar Filtros</button>
+                        </div>
                     </form>
                 </div>
                 <div>
                     {/* cards aqui */}
                 </div>
                 <div>
+                    <h3>Lista de Impressões ({impressoes.length} registros)</h3>
                     <HistoricoImpressoes impressoes={impressoes}/>
                 </div>
             </div>
