@@ -1,36 +1,18 @@
-import { getImpressoes } from "./impressaoDB"
-import { escola } from "@/enums/enums"
-
-const arrayImpressoes = await getImpressoes()
 const hoje = new Date().toISOString().split('T')[0]
 
-export function impressoesHoje () {
-    let impressoes_hoje = 0
-    arrayImpressoes.map(impressao=>{
-    if(impressao.data.toISOString().split('T')[0] == hoje){
-        impressoes_hoje += 1
-    }
-    })
-    return impressoes_hoje
+export async function impressoesHoje (arrayImpressoes) {
+    return arrayImpressoes.filter(impressao=>impressao.data.toISOString().split('T')[0] == hoje).length
 }
 
-export function impressoesMes (){
-    let impressoes_mes = 0
-    arrayImpressoes.map(impressao=>{
-    if(impressao.data.toISOString().split('-')[1] == hoje.split('-')[1]){
-        impressoes_mes += 1
-    }
-    })
-    return impressoes_mes
+export async function impressoesMes (arrayImpressoes){
+    return arrayImpressoes.map(impressao=>impressao.data.toISOString().split('-')[1] == hoje.split('-')[1]).length
 }
 
-export function impressoesTotal (){
-    let impressoes_total = 0
-    impressoes_total = arrayImpressoes.length
-    return impressoes_total
+export async function impressoesTotal (arrayImpressoes){
+    return arrayImpressoes.length 
 }
 
-export function paginasHoje () {
+export async function paginasHoje (arrayImpressoes) {
     let paginas_hoje = 0
     arrayImpressoes.map(impressao=>{
     if(impressao.data.toISOString().split('T')[0] == hoje){
@@ -40,7 +22,7 @@ export function paginasHoje () {
     return paginas_hoje
 }
 
-export function paginasMes () {
+export async function paginasMes (arrayImpressoes) {
     let paginas_mes = 0
     arrayImpressoes.map(impressao=>{
     if(impressao.data.toISOString().split('-')[1] == hoje.split('-')[1]){
@@ -50,7 +32,7 @@ export function paginasMes () {
     return paginas_mes
 }
 
-export function paginasTotal () {
+export async function paginasTotal (arrayImpressoes) {
     let paginas_total = 0
     arrayImpressoes.map(impressao=>{
     paginas_total += impressao.paginas
@@ -58,17 +40,11 @@ export function paginasTotal () {
     return paginas_total
 }
 
-export function impressoes_escola(escola){
-    let impressoes = 0
-    arrayImpressoes.map(impressao=>{
-        if(impressao.escola == escola){
-            impressoes += 1
-        }
-    })
-    return impressoes
+export async function impressoes_escola(arrayImpressoes, escola){
+    return arrayImpressoes.filter(impressao=>impressao.escola == escola).length
 }
 
-export function paginas_escola(escola){
+export async function paginas_escola(arrayImpressoes, escola){
     let paginas = 0
     arrayImpressoes.map(impressao=>{
         if(impressao.escola == escola){

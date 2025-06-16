@@ -1,8 +1,20 @@
 import { escola } from "@/enums/enums";
-import { impressoes_escola, impressoesHoje, impressoesMes, impressoesTotal, paginas_escola, paginasHoje, paginasMes, paginasTotal } from "@/lib/filtros";
+import { 
+  impressoes_escola,
+  impressoesHoje,
+  impressoesMes,
+  impressoesTotal,
+  paginas_escola,
+  paginasHoje,
+  paginasMes,
+  paginasTotal 
+} from "@/lib/filtros";
+import { getImpressoes } from "@/lib/impressaoDB";
 import { Calendar, FileText, Printer } from "lucide-react";
 
 export default async function Dashboard() {
+
+  const arrayImpressoes = await getImpressoes()
 
   return (
     <main className="flex flex-col items-center min-h-screen p-8 w-[1280px]">
@@ -17,25 +29,25 @@ export default async function Dashboard() {
               <Calendar className="stroke-2"/>
             </div>
             <div className="flex flex-col text-start space-y-1">
-              <p className="font-bold text-2xl">{impressoesHoje()}</p>
+              <p className="font-bold text-2xl">{impressoesHoje(arrayImpressoes)}</p>
               <p>Impressões hoje</p>
-              <p>{paginasHoje()} páginas</p>
+              <p>{paginasHoje(arrayImpressoes)} páginas</p>
             </div>
           </div>
           <div className="card_dashboard from-purple-500 to-purple-600">
             <div><FileText className="stroke-2"/></div>
             <div className="flex flex-col text-start space-y-1">
-              <p className="font-bold text-2xl">{impressoesMes()}</p>
+              <p className="font-bold text-2xl">{impressoesMes(arrayImpressoes)}</p>
               <p>Impressões neste mês</p>
-              <p>{paginasMes()} páginas</p>
+              <p>{paginasMes(arrayImpressoes)} páginas</p>
             </div>
           </div>
           <div className="card_dashboard from-pink-500 to-pink-600">
             <div><Printer className="stroke-2"/></div>
             <div className="flex flex-col text-start space-y-1">
-              <p className="font-bold text-2xl">{impressoesTotal()}</p>
+              <p className="font-bold text-2xl">{impressoesTotal(arrayImpressoes)}</p>
               <p>Impressões no Total geral</p>
-              <p>{paginasTotal()} páginas</p>
+              <p>{paginasTotal(arrayImpressoes)} páginas</p>
             </div>
           </div>
         </div>
@@ -46,9 +58,9 @@ export default async function Dashboard() {
               {escola[0]}
             </div>
             <div className="flex flex-col text-end space-y-1">
-                <p className="font-bold text-2xl">{impressoes_escola(escola[0])}</p>
+                <p className="font-bold text-2xl">{impressoes_escola(arrayImpressoes, escola[0])}</p>
                 <p>impressões</p>
-                <p>{paginas_escola(escola[0])} páginas</p>
+                <p>{paginas_escola(arrayImpressoes, escola[0])} páginas</p>
             </div>
           </div>
           <div className="w-full p-6 flex justify-between items-center border rounded-md shadow-lg bg-green-100 border-green-200 text-green-600 ">
@@ -56,9 +68,9 @@ export default async function Dashboard() {
               {escola[1]}
             </div>
             <div className="flex flex-col text-end space-y-1">
-                <p className="font-bold text-2xl">{impressoes_escola(escola[1])}</p>
+                <p className="font-bold text-2xl">{impressoes_escola(arrayImpressoes, escola[1])}</p>
                 <p>impressões</p>
-                <p>{paginas_escola(escola[1])} páginas</p>
+                <p>{paginas_escola(arrayImpressoes, escola[1])} páginas</p>
             </div>
           </div>
           <div className="w-full p-6 flex justify-between items-center border rounded-md shadow-lg bg-purple-100 border-purple-200 text-purple-600 ">
@@ -66,9 +78,9 @@ export default async function Dashboard() {
               {escola[2]}
             </div>
             <div className="flex flex-col text-end space-y-1">
-                <p className="font-bold text-2xl">{impressoes_escola(escola[2])}</p>
+                <p className="font-bold text-2xl">{impressoes_escola(arrayImpressoes, escola[2])}</p>
                 <p>impressões</p>
-                <p>{paginas_escola(escola[2])} páginas</p>
+                <p>{paginas_escola(arrayImpressoes, escola[2])} páginas</p>
             </div>
           </div>
         </div>
