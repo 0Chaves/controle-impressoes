@@ -1,8 +1,8 @@
 'use client'
 import HistoricoImpressoes from "@/components/historicoImpressoes"
 import { escola, meses, tipo_folha } from "@/enums/enums"
-import { Funnel } from "lucide-react"
-import { useState } from "react"
+import { FileText, Funnel, Printer } from "lucide-react"
+import { useEffect, useState } from "react"
 
 export default function Historico(){
     const anoAtual = new Date().toISOString().split("-")[0]
@@ -33,6 +33,16 @@ export default function Historico(){
             ano: anoAtual
         })
     }
+
+    const [paginasTotais, setPaginasTotais] = useState(0)
+
+    useEffect(()=>{
+        let paginas = 0
+        impressoes.map(impressao=>{
+            paginas += impressao.paginas
+        })
+        setPaginasTotais(paginas)
+    }, [impressoes])
 
     return(
         <main className="flex flex-col items-center min-h-screen p-8 w-[1280px]">
@@ -88,8 +98,25 @@ export default function Historico(){
                         </div>
                     </form>
                 </div>
-                <div>
-                    {/* cards aqui */}
+                <div className="flex space-x-4">
+                    <div className="card_dashboard bg-gradient-to-r from-blue-500 to to-blue-700">
+                        <div>
+                            <Printer className="stroke-2"/>
+                        </div>
+                        <div className="flex flex-col text-start space-y-1">
+                            <p className="font-bold text-2xl">{impressoes.length}</p>
+                            <p>Total de impressões</p>
+                        </div>
+                    </div>
+                    <div className="card_dashboard bg-gradient-to-r from-indigo-500 to to-indigo-700">
+                        <div>
+                            <FileText className="stroke-2"/>
+                        </div>
+                        <div className="flex flex-col text-start space-y-1">
+                            <p className="font-bold text-2xl">{paginasTotais}</p>
+                            <p>Total de páginas</p>
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <h3>Lista de Impressões ({impressoes.length} registros)</h3>
