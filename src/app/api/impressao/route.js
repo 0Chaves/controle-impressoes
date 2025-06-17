@@ -39,4 +39,5 @@ export async function DELETE(req) {
     const { searchParams } = new URL(req.url)
     const id = searchParams.get("id")
     await Impressao.findByIdAndDelete(id)
+    return Response.json({status: "deleted"})
 }

@@ -18,7 +18,6 @@ export default function HistoricoImpressoes({impressoes}){
             method: "DELETE"
         })
         router.refresh()
-        return Response.json({status: "deleted"})
     }
     return(
         <div className="p-4 pt-0">
