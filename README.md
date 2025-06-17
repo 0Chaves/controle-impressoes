@@ -30,6 +30,9 @@ A aplicação estará rodando em [http://localhost:3000](http://localhost:3000) 
 
 ## Prints
 
-
+![dashboard](/public/dashboard.jpg)
+![novaImpressao](/public/novaImpressao.jpg)
+![historico](/public/historico.jpg)
+![filtros](/public/filtros.jpg)
 
 
