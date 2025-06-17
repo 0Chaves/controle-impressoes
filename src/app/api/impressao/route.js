@@ -33,3 +33,10 @@ export async function GET(req) {
 
     return Response.json(impressoesConvertidas)
 }
+
+export async function DELETE(req) {
+    await connectDB()
+    const { searchParams } = new URL(req.url)
+    const id = searchParams.get("id")
+    await Impressao.findByIdAndDelete(id)
+}

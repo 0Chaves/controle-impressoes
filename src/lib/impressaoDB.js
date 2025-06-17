@@ -25,10 +25,3 @@ export async function salvarImpressao(impressao){
     revalidatePath('/novaimpressao')
     revalidatePath('/dashboard')
 }
-
-export async function deletarImpressao(id){
-    await connectDB()
-    await Impressao.findByIdAndDelete(id)
-    revalidatePath('/historico')
-    revalidatePath('/dashboard')
-}
