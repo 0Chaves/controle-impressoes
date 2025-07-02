@@ -5,7 +5,7 @@ export async function impressoesHoje (arrayImpressoes) {
 }
 
 export async function impressoesMes (arrayImpressoes){
-    return arrayImpressoes.map(impressao=>impressao.data.toISOString().split('-')[1] == hoje.split('-')[1]).length
+    return arrayImpressoes.filter(impressao=>impressao.data.toISOString().split('-')[1] == hoje.split('-')[1]).length
 }
 
 export async function impressoesTotal (arrayImpressoes){
